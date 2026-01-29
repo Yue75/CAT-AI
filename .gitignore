@@ -1,2 +1,9 @@
-./app/__pycache__
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+.venv/
+
+# ML models
 backend/model/
