@@ -1,6 +1,6 @@
 fastapi
-uvicorn
+uvicorn[standard]
 numpy
 pillow
 python-multipart
-c
+click
