@@ -6,19 +6,16 @@ MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'model', 'model_tl.ke
 model = tf.keras.models.load_model(MODEL_PATH)
 
 CLASS_NAMES = [
-    'American Bobtail',
-    'American Shorthair',
+    'Abyssinian',
     'Bengal',
-    'Bombay', 
+    'Birman',
+    'Bombay',
     'British Shorthair',
-    'Himalayan',
+    'Egyptian Mau',
     'Maine Coon',
-    'Manx',
     'Persian',
     'Ragdoll',
     'Russian Blue',
     'Siamese',
-    'Snowshoe',
-    'Turkish Angora',
-    'Turkish Van'
+    'Sphynx - Hairless Cat'
 ]

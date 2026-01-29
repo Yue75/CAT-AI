@@ -1,14 +1,11 @@
 import numpy as np
-import tensorflow as tf
 from .model import model, CLASS_NAMES
 
 def predict_top3(img_array):
     if model is None:
         return [{"breed": "Erreur", "probability": 0.0, "details": "Modèle non chargé"}]
 
-    logits = model.predict(img_array)[0]
-
-    probs = tf.nn.softmax(logits).numpy()
+    probs = model.predict(img_array)[0]
 
     top3_idx = np.argsort(probs)[-3:][::-1]
 
