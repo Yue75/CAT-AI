@@ -1,15 +1,26 @@
 import numpy as np
-from app.model import model, CLASS_NAMES
- 
+import tensorflow as tf
+from .model import model, CLASS_NAMES
+
 def predict_top3(img_array):
-    preds = model.predict(img_array)[0]
- 
-    top3_idx = np.argsort(preds)[-3:][::-1]
- 
-    return [
-        {
-            "breed": CLASS_NAMES[i],
-            "probability": float(preds[i])
-        }
-        for i in top3_idx
-    ]
+    if model is None:
+        return [{"breed": "Erreur", "probability": 0.0, "details": "Modèle non chargé"}]
+
+    logits = model.predict(img_array)[0]
+
+    probs = tf.nn.softmax(logits).numpy()
+
+    top3_idx = np.argsort(probs)[-3:][::-1]
+
+    results = []
+    for i in top3_idx:
+        breed_name = CLASS_NAMES[i]
+        
+        score_percent = float(np.round(probs[i] * 100, 2))
+        
+        results.append({
+            "breed": breed_name,
+            "probability": score_percent
+        })
+
+    return results
