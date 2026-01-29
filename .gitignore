@@ -5,9 +5,7 @@ __pycache__/
 # Virtual env
 .venv/
 
-# ML models
-backend/model/
-
+backend/model/model_custom.keras
 archive(1).zip
 archive(1)
 data
