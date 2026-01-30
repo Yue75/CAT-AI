@@ -1,15 +1,16 @@
-export async function predictCat(imageFile) {
-  const formData = new FormData();
-  formData.append("file", imageFile);
+import numpy as np
+from app.model import model, CLASS_NAMES
 
-  const response = await fetch("http://127.0.0.1:8000/predict", {
-    method: "POST",
-    body: formData,
-  });
+def predict_top3(img_array):
+    preds = model.predict(img_array)[0]
 
-  if (!response.ok) {
-    throw new Error("Erreur lors de la prédiction");
-  }
+    top3_idx = np.argsort(preds)[-3:][::-1]
 
-  return response.json();
-}
+    return [
+        {
+            "breed": CLASS_NAMES[i],
+            "probability": float(preds[i])
+        }
+        for i in top3_idx
+    ]
+
