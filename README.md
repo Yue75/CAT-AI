@@ -43,7 +43,7 @@ L'interface utilisateur est une application web moderne développée avec **Reac
 
 L'application permet de téléverser une image de chat et d'afficher les prédictions de race renvoyées par le backend.
 
-## � Déploiement
+## Déploiement
 
 Le projet est également déployé et accessible en ligne :
 
@@ -52,7 +52,7 @@ Le projet est également déployé et accessible en ligne :
 
 Vous pouvez tester l'application directement via ces liens sans installation locale.
 
-## �🛠️ Installation et Lancement
+## 🛠️ Installation et Lancement
 
 Voici les commandes pour mettre en place et lancer le projet.
 
@@ -99,4 +99,5 @@ Pour entraîner le modèle, vous pouvez télécharger et décompresser les donn�
 ```bash
 unzip "archive.zip" -d data
 ```
+
 
