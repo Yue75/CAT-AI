@@ -1,14 +1,15 @@
-export interface Prediction {
+export interface PredictionResult {
   breed: string;
   probability: number;
 }
 
 export interface PredictionResponse {
-  predictions: Prediction[];
+  filename: string;
+  predictions: PredictionResult[];
 }
 
 export interface ResultData {
   image: string;
-  realBreed?: string;
-  predictions: Prediction[];
+  realBreed: string;
+  predictions: PredictionResult[];
 }
