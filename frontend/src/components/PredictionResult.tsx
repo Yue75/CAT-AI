@@ -7,34 +7,44 @@ interface Props {
 export default function PredictionResult({ data }: Props) {
   if (!data) return null;
 
-  const top1 = data.predictions[0];
-
   return (
-    <div>
-      <img src={data.image} width={300} />
+    <div className="bg-white rounded-xl shadow-md p-6 flex flex-col gap-6">
+      <img
+        src={data.image}
+        alt="Chat"
+        className="w-full h-64 object-cover rounded-xl"
+      />
 
-      <p>
-        <strong>Race réelle :</strong>{" "}
-        {data.realBreed || "Non renseignée"}
-      </p>
+      <div className="text-center">
+        <p className="text-gray-700 font-medium">
+          <span className="font-semibold">Race réelle :</span>{" "}
+          {data.realBreed || "Non renseignée"}
+        </p>
+        <p className="text-gray-800 font-semibold text-lg mt-1">
+          Race prédite : {data.predictions[0].breed}
+        </p>
+      </div>
 
-      <p>
-        <strong>Race prédite :</strong> {top1.breed}
-      </p>
-
-      <p>
-        <strong>Confiance :</strong>{" "}
-        {(top1.probability * 100).toFixed(2)}%
-      </p>
-
-      <h4>Top 3 prédictions</h4>
-      <ul>
+      <h4 className="text-gray-700 font-semibold">Top 3 des prédictions :</h4>
+      <div className="flex flex-col gap-3">
         {data.predictions.map((p, i) => (
-          <li key={i}>
-            {p.breed} — {(p.probability * 100).toFixed(2)}%
-          </li>
+          <div key={i} className="flex items-center gap-4">
+            <span className="w-1/4 font-medium text-gray-700">
+              {i + 1}. {p.breed}
+            </span>
+            <div className="w-3/4 h-4 bg-gray-200 rounded-full relative">
+              <div
+                className="h-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 transition-all"
+                style={{ width: `${p.probability * 100}%` }}
+              ></div>
+              <div className="absolute right-0 top-0 -mt-1 text-sm text-gray-700 font-medium">
+                {(p.probability * 100).toFixed(1)}%
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
+    
