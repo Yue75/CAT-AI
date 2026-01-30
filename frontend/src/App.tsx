@@ -21,9 +21,6 @@ function App() {
           <PredictionResult data={result} />
         </div>
       )}
-      <h1 className="text-red-500 text-5xl font-bold">
-  TEST TAILWIND
-</h1>
 
     </div>
   );
