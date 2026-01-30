@@ -37,14 +37,6 @@ export default function ImageUpload({ onResult }: Props) {
         className="border border-gray-300 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition"
       />
 
-      <input
-        type="text"
-        placeholder="Race réelle (optionnel)"
-        value={realBreed}
-        onChange={(e) => setRealBreed(e.target.value)}
-        className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-400 transition"
-      />
-
       <button
         onClick={handleSubmit}
         disabled={loading}

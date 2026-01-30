@@ -16,10 +16,6 @@ export default function PredictionResult({ data }: Props) {
       />
 
       <div className="text-center">
-        <p className="text-gray-700 font-medium">
-          <span className="font-semibold">Race réelle :</span>{" "}
-          {data.realBreed || "Non renseignée"}
-        </p>
         <p className="text-gray-800 font-semibold text-lg mt-1">
           Race prédite : {data.predictions[0].breed}
         </p>
@@ -35,10 +31,10 @@ export default function PredictionResult({ data }: Props) {
             <div className="w-3/4 h-4 bg-gray-200 rounded-full relative">
               <div
                 className="h-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 transition-all"
-                style={{ width: `${p.probability * 100}%` }}
+                style={{ width: `${p.probability}%` }}
               ></div>
               <div className="absolute right-0 top-0 -mt-1 text-sm text-gray-700 font-medium">
-                {(p.probability * 100).toFixed(1)}%
+                {(p.probability).toFixed(1)}%
               </div>
             </div>
           </div>
