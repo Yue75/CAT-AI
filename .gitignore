@@ -10,3 +10,5 @@ archive(1).zip
 archive(1)
 data
 data_clean
+
+node_modules
